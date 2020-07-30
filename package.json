@@ -1,5 +1,5 @@
 {
-  "name": "react-native-drag-resize",
+  "name": "@skynetcmg47/react-native-drag-resize",
   "version": "1.0.2",
   "description": "React Native component for draggable and resizable manipulation.",
   "main": "index.js",
@@ -13,9 +13,9 @@
     "ios",
     "android"
   ],
-  "author": "Denis Evdokimov",
+  "author": "Denis Evdokimov, Nam Phuong",
   "license": "MIT",
-  "homepage": "https://github.com/CaptainOmega/react-native-drag-resize",
+  "homepage": "https://github.com/skynetcmg47/react-native-drag-resize",
   "peerDependencies": {
     "react": "16.8.3",
     "react-native": "0.59.5"

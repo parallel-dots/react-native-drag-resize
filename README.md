@@ -1,4 +1,5 @@
 # react-native-drag-resize
+This repo was forked from  https://github.com/CaptainOmega/react-native-drag-resize
 
 React Native component for draggable and resizable manipulation.
 
@@ -18,7 +19,7 @@ React Native component for draggable and resizable manipulation.
 ### Installation
 
 ```bash
-$ npm i react-native-drag-resize --save
+$ npm i @skynetcmg47/react-native-drag-resize --save
 ```
 
 ### Basic Usage
@@ -77,7 +78,7 @@ You can watch more examples in `example` directory
 | onDragEnd | - | `function` | Handle drag end event. Input argument `[x, y]`. |
 | onResizeStart | - | `function` | Handle resize start event. Input argument `[x, y]`. |
 | onResize | - | `function` | Handle resize event. Input argument `[x, y]`. |
-| onResizeEnd | - | `function` | Handle resize end event. Input argument `[x, y]`. |
+| onResizeEnd | - | `function` | Handle resize end event. Input argument `[x, y, w, h]`. |
 
 #### Basic props of `DragResizeContainer`
 

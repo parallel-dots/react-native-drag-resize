@@ -41,6 +41,7 @@ export class DragResizeBlock extends Component {
       h,
       minW,
       minH,
+      visiable,
     } = props;
 
     this.state = {
@@ -556,6 +557,8 @@ export class DragResizeBlock extends Component {
       onResizeEnd([
         this.state.x,
         this.state.y,
+        this.state.w,
+        this.state.h,
       ]);
     }
   }
@@ -683,6 +686,7 @@ export class DragResizeBlock extends Component {
       children,
       isDisabled,
       zIndex,
+      visiable
     } = this.props;
 
     const {
@@ -693,39 +697,45 @@ export class DragResizeBlock extends Component {
       isSelected,
     } = this.state;
 
-    return (
-      <View
-        style={{
-          position: 'absolute',
-          left: x,
-          top: y,
-          width: w,
-          height: h,
-          padding: CONNECTOR_SIZE / 2,
-          zIndex: isSelected ? zIndex + 1 : zIndex,
-        }}
-      >
-        <TouchableWithoutFeedback
-          onPress={this.onPress}
+    if(visiable) {
+      return (
+        <View
+          style={{
+            position: 'absolute',
+            left: x,
+            top: y,
+            width: w,
+            height: h,
+            padding: CONNECTOR_SIZE / 2,
+            zIndex: isSelected ? zIndex + 1 : zIndex,
+          }}
         >
-          <View
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
+          <TouchableWithoutFeedback
+            onPress={this.onPress}
           >
-            {children}
-          </View>
-        </TouchableWithoutFeedback>
-
-        {isDisabled ? null : this.renderConnectors()}
-
-      </View>
-    );
+            <View
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              {children}
+            </View>
+          </TouchableWithoutFeedback>
+  
+          {isDisabled ? null : this.renderConnectors()}
+  
+        </View>
+      );
+    }
+    else {
+      return null;
+    }
   }
 }
 
 DragResizeBlock.defaultProps = {
+  visiable: true,
   x: 0,
   y: 0,
   w: 100,
