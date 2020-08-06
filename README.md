@@ -31,7 +31,7 @@ $ npm i @skynetcmg47/react-native-drag-resize --save
 ```jsx
 import {
   DragResizeBlock,
-} from 'react-native-drag-resize';
+} from '@skynetcmg47/react-native-drag-resize';
 ```
 
 - Then, use component like this:
