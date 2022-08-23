@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   PanResponder,
   View,
 } from 'react-native';
 import PropTypes from 'prop-types';
+
+const borderWidth = 7
+const padding = [5,10,5,11] // top, bottom, left, right
+const boxSize = 20
 
 export const CONNECTOR_TOP_LEFT = 'tl';
 export const CONNECTOR_TOP_MIDDLE = 'tm';
@@ -93,25 +97,55 @@ export class Connector extends Component {
     });
   }
 
+  getStyles = (type, x, y) => {
+    if (type == 'tl') {
+      return {
+        left: x + padding[2],
+        top: y + padding[0],
+        borderLeftWidth: borderWidth,
+        borderTopWidth: borderWidth,
+      }
+    } else if (type == 'tr') {
+      return {
+        left: x - padding[3],
+        top: y + padding[0],
+        borderRightWidth: borderWidth,
+        borderTopWidth: borderWidth
+      }
+    } else if (type == 'bl') {
+      return {
+        left: x + padding[2],
+        top: y - padding[3],
+        borderLeftWidth: borderWidth,
+        borderBottomWidth: borderWidth
+      }
+    } else if (type == 'br') {
+      return {
+        left: x - padding[3],
+        top: y - padding[1],
+        borderBottomWidth: borderWidth,
+        borderRightWidth: borderWidth
+      }
+    }
+  }
+
   render() {
     const {
       x,
       y,
       size,
+      type
     } = this.props;
 
     return (
       <View
-        style={{
+        style={[this.getStyles(type, x, y), {
           position: 'absolute',
-          left: x,
-          top: y,
-          width: size,
-          height: size,
-          borderWidth: 2,
-          borderColor: 'black',
-          backgroundColor: 'white'
-        }}
+          width: boxSize,
+          height: boxSize,
+          borderColor: '#fff',
+          backgroundColor: 'rgba(255,255,255)',
+        }]}
         {...this._panResponder.panHandlers}
       />
     );
