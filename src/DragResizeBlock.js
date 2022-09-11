@@ -706,7 +706,7 @@ export class DragResizeBlock extends Component {
             top: y,
             width: w,
             height: h,
-            padding: CONNECTOR_SIZE / 2,
+            // padding: CONNECTOR_SIZE / 2,
             zIndex: isSelected ? zIndex + 1 : zIndex,
           }}
         >
