@@ -6,8 +6,9 @@ import {
 import PropTypes from 'prop-types';
 
 const borderWidth = 7
-const padding = [5,10,5,11] // top, bottom, left, right
-const boxSize = 20
+// const padding = [5,10,5,11] // top, bottom, left, right
+const padding = [0,5,0,11]
+const boxSize = 25
 
 export const CONNECTOR_TOP_LEFT = 'tl';
 export const CONNECTOR_TOP_MIDDLE = 'tm';
@@ -122,7 +123,7 @@ export class Connector extends Component {
     } else if (type == 'br') {
       return {
         left: x - padding[3],
-        top: y - padding[1],
+        top: y - padding[3],
         borderBottomWidth: borderWidth,
         borderRightWidth: borderWidth
       }
