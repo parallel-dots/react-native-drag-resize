@@ -140,6 +140,7 @@ export class Connector extends Component {
 
     return (
       <View
+        hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
         style={[this.getStyles(type, x, y), {
           position: 'absolute',
           width: boxSize,
