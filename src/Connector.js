@@ -127,6 +127,43 @@ export class Connector extends Component {
         borderBottomWidth: borderWidth,
         borderRightWidth: borderWidth
       }
+    } else if(type=='c'){
+      return {
+        left: x,
+        top: y,
+        backgroundColor: 'transparent',
+        width: 2*boxSize,
+        height: 2*boxSize
+      }
+    } else if(type=='tm'){
+      return {
+        left: boxSize,
+        top: y - boxSize,
+        borderBottomWidth: 0.5,
+        width: '80%',
+      }
+    } else if(type=='bm'){
+      return {
+        left: boxSize,
+        top: y - boxSize/2,
+        borderBottomWidth: 0.5,
+        alignSelf: 'center',
+        width: '80%'
+      }
+    } else if(type=='ml'){
+      return {
+        left: x,
+        top: boxSize,
+        borderLeftWidth: 0.5,
+        height: '80%'
+      }
+    } else if(type=='mr'){
+      return {
+        left: x+boxSize/2,
+        top: boxSize,
+        borderLeftWidth: 0.5,
+        height: '80%'
+      }
     }
   }
 
@@ -141,13 +178,13 @@ export class Connector extends Component {
     return (
       <View
         hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-        style={[this.getStyles(type, x, y), {
+        style={[{
           position: 'absolute',
           width: boxSize,
           height: boxSize,
           borderColor: '#fff',
           backgroundColor: 'rgba(255,255,255)',
-        }]}
+        },this.getStyles(type, x, y) ]}
         {...this._panResponder.panHandlers}
       />
     );
