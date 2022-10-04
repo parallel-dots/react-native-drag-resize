@@ -658,6 +658,7 @@ export class DragResizeBlock extends Component {
   renderConnectors = () => {
     const {
       connectors,
+      overlap
     } = this.props;
 
     const {
@@ -676,6 +677,7 @@ export class DragResizeBlock extends Component {
           onStart={this.connectorsMap[connectorType].onStart}
           onMove={this.connectorsMap[connectorType].onMove}
           onEnd={this.connectorsMap[connectorType].onEnd}
+          overlap={overlap}
         />
       );
     });
@@ -805,4 +807,5 @@ DragResizeBlock.propTypes = {
   onResizeStart: PropTypes.func,
   onResize: PropTypes.func,
   onResizeEnd: PropTypes.func,
+  overlap: PropTypes.bool
 };
