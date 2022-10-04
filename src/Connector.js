@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {
   PanResponder,
   View,
+  StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
 
 const borderWidth = 7
 // const padding = [5,10,5,11] // top, bottom, left, right
-const padding = [0,5,0,11]
+const padding = [0, 5, 0, 11]
 const boxSize = 25
 
 export const CONNECTOR_TOP_LEFT = 'tl';
@@ -127,41 +128,87 @@ export class Connector extends Component {
         borderBottomWidth: borderWidth,
         borderRightWidth: borderWidth
       }
-    } else if(type=='c'){
+    } else if (type == 'c') {
       return {
         left: x,
         top: y,
         backgroundColor: 'transparent',
-        width: 2*boxSize,
-        height: 2*boxSize
+        width: 2 * boxSize,
+        height: 2 * boxSize
       }
-    } else if(type=='tm'){
+    } else if (type == 'tm') {
       return {
         left: boxSize,
         top: y - boxSize,
         borderBottomWidth: 0.5,
         width: '80%',
       }
-    } else if(type=='bm'){
+    } else if (type == 'bm') {
       return {
         left: boxSize,
-        top: y - boxSize/2,
+        top: y - boxSize / 2,
         borderBottomWidth: 0.5,
         alignSelf: 'center',
         width: '80%'
       }
-    } else if(type=='ml'){
+    } else if (type == 'ml') {
       return {
         left: x,
         top: boxSize,
         borderLeftWidth: 0.5,
         height: '80%'
       }
-    } else if(type=='mr'){
+    } else if (type == 'mr') {
       return {
-        left: x+boxSize/2,
+        left: x + boxSize / 2,
         top: boxSize,
         borderLeftWidth: 0.5,
+        height: '80%'
+      }
+    }
+  }
+
+  getOverlapStyles = (type, x, y) => {
+    if (type == 'bm') {
+      return {
+        left: x-10,
+        top: y+4,
+        width: 40,
+        height: 10,
+        borderRadius: 5
+      }
+    } else if(type=='mr'){
+      return {
+        left: x+4,
+        top: y+5,
+        width: 10,
+        height: 60,
+        borderRadius: 5,
+        zIndex: 11111111
+      }
+    }else if(type=='ml'){
+      return {
+        left: x,
+        top: y+5,
+        width: 10,
+        height: 60,
+        borderRadius: 5,
+        zIndex: 11111111
+      }
+    }
+  }
+
+  getLineStyles = (type) => {
+    if(type=='bm'){
+      return {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
+        width: '80%'
+      }
+    } else if(type=='mr' || type=='ml') {
+      return{
+        borderRightColor: 'black',
+        borderRightWidth: 1,
         height: '80%'
       }
     }
@@ -172,19 +219,33 @@ export class Connector extends Component {
       x,
       y,
       size,
-      type
+      type,
+      overlap
     } = this.props;
 
     return (
-      <View
-        hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+      overlap && <View
+        hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+        {...this._panResponder.panHandlers}
+        style={[{
+          position: 'absolute',
+          backgroundColor: '#fff',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }, this.getOverlapStyles(type, x, y)]}
+      >
+        <View style={this.getLineStyles(type)}
+        />
+
+      </View> || <View
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
         style={[{
           position: 'absolute',
           width: boxSize,
           height: boxSize,
           borderColor: '#fff',
           backgroundColor: 'rgba(255,255,255)',
-        },this.getStyles(type, x, y) ]}
+        }, this.getStyles(type, x, y)]}
         {...this._panResponder.panHandlers}
       />
     );
@@ -198,4 +259,5 @@ Connector.propTypes = {
   onStart: PropTypes.func.isRequired,
   onMove: PropTypes.func.isRequired,
   onEnd: PropTypes.func.isRequired,
+  overlap: PropTypes.bool
 };
