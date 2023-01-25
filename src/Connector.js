@@ -173,7 +173,7 @@ export class Connector extends Component {
       return {
         left: x-10,
         top: y+4,
-        width: 40,
+        width: 60,
         height: 10,
         borderRadius: 5
       }
@@ -182,7 +182,7 @@ export class Connector extends Component {
         left: x+4,
         top: y+5,
         width: 10,
-        height: 60,
+        height: 80,
         borderRadius: 5,
         zIndex: 11111111
       }
@@ -191,7 +191,7 @@ export class Connector extends Component {
         left: x,
         top: y+5,
         width: 10,
-        height: 60,
+        height: 80,
         borderRadius: 5,
         zIndex: 11111111
       }
