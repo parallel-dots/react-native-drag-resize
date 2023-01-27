@@ -758,8 +758,8 @@ DragResizeBlock.defaultProps = {
   y: 0,
   w: 100,
   h: 100,
-  minW: 15,
-  minH: 15,
+  minW: 30,
+  minH: 30,
   axis: AXIS_ALL,
   limitation: {
     x: 0,
