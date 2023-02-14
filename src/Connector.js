@@ -184,18 +184,18 @@ export class Connector extends Component {
         ios: x+15,
         android: x+4, 
         }),
-        top: y+5,
+        top: y-100,
         width: 10,
-        height: 80,
+        height: 140,
         borderRadius: 5,
         zIndex: 11111111
       }
     }else if(type=='ml'){
       return {
         left: x,
-        top: y+5,
+        top: y-100,
         width: 10,
-        height: 80,
+        height: 140,
         borderRadius: 5,
         zIndex: 11111111
       }
