@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   PanResponder,
   View,
-  StyleSheet,
-  Platform
+  StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -180,13 +179,10 @@ export class Connector extends Component {
       }
     } else if(type=='mr'){
       return {
-        left: Platform.select({
-        ios: x+15,
-        android: x+4, 
-        }),
+        left: x+4,
         top: y+5,
         width: 10,
-        height: 140,
+        height: 80,
         borderRadius: 5,
         zIndex: 11111111
       }
@@ -195,7 +191,7 @@ export class Connector extends Component {
         left: x,
         top: y+5,
         width: 10,
-        height: 140,
+        height: 80,
         borderRadius: 5,
         zIndex: 11111111
       }
